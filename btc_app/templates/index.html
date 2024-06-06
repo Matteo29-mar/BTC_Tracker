@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Bitcoin Tracker</h1>
+        <div id="price">Current Bitcoin Price: <span id="bitcoin-price"></span></div>
+        <div class="links">
+            <a href="/bitcoin-chart">View Bitcoin Chart</a> | 
+            <a href="/bitcoin-news">Latest Bitcoin News</a>
+        </div>
+    </div>
+
+    <script>
+        fetch('/bitcoin-price')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('bitcoin-price').textContent = data.bitcoin_price;
+            });
+    </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin News</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Bitcoin News</h1>
+        <ul>
+            {% for article in news %}
+            <li><a href="{{ article.url }}" target="_blank">{{ article.title }}</a></li>
+            {% endfor %}
+        </ul>
+        <a href="/">Go back to home</a>
+    </div>
+</body>
+</html>
