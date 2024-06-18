@@ -30,4 +30,4 @@ jobs:
       with:
         context: ./btc_app
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/btc_tracker:latest
+        tags: ${{ secrets.DOCKER_USERNAME }}/btcTracker:latest
