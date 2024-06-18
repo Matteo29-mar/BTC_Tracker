@@ -1,4 +1,4 @@
-name: CI_Python_app
+name: Build and Push Docker Image
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-push:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,13 +25,9 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Build Docker image
+    - name: Build and push Docker image
       uses: docker/build-push-action@v4
       with:
-        context: .
+        context: ./btc_app
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/btc_a:latest
-
-    - name: Run tests in Docker container
-      run: |
-        docker run --rm ${{ secrets.DOCKER_USERNAME }}/myapp:latest pytest
+        tags: ${{ secrets.DOCKER_USERNAME }}/btc_tracker:latest
