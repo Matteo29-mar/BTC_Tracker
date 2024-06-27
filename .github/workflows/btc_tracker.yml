@@ -28,6 +28,6 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@v4
       with:
-        context: btc_app/Dockerfile
+        context: BTC_Tracker/btc_app/Dockerfile
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/btctracker:latest
