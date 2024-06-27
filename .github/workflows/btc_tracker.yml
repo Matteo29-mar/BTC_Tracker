@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   build-and-push:
@@ -28,6 +25,7 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@v4
       with:
-        context: BTC_Tracker/btc_app/Dockerfile
+        context: BTC_Tracker  # La directory radice del progetto
+        dockerfile: btc_app/Dockerfile  # Il percorso relativo del Dockerfile all'interno del contesto
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/btctracker:latest
